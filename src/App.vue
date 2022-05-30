@@ -1,21 +1,45 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import Button from "./components/Button.vue";
+import Spinner from "./components/Spinner.vue";
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+    <img alt="Mikuni Logo" src="./assets/mikuni_logo.png"/>
+    <Spinner />
+    <div class="footer">
+        <div class="actions">
+            <Button>Jouer</Button>
+            <div class="more">
+                <Button small>Vérifier les mise à jour</Button>
+                <Button small>Désinstaller</Button>
+            </div>
+        </div>
+        <div class="infos">
+            <div class="info">
+                <p>Version du launcher: {}</p>
+                <p>Version du jeu: {}</p>
+            </div>
+            <div class="info">
+                <p>Dossier d'installation: {}</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style>
+@font-face {
+    font-family: "Luckiest Guy";
+    src: url("./assets/LuckiestGuy-Regular.ttf") format("truetype");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "Luckiest Guy", sans-serif;
+  color: #333333;
 }
 </style>
