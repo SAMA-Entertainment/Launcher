@@ -1,20 +1,24 @@
 <script setup>
-import Button from "./components/Button.vue";
 import { reactive } from "vue";
-import UninstallModal from "./modals/UninstallModal.vue";
+import Button from "./components/Button.vue";
 import UpdateModal from "./modals/UpdateModal.vue";
+import SettingsModal from "./modals/SettingsModal.vue";
+import { Command } from '@tauri-apps/api/shell'
+import { process } from "@tauri-apps/api";
 
 let state = reactive({
     loading: false,
     message: 'Jouer',
     checkingUpdate: false,
-    confirmUninstall: false
+    showSettings: false,
 });
 
 function launchGame(){
     if(state.loading) return;
     state.loading = true;
     state.message = 'Démarrage';
+    new Command('run-game', []).spawn().then(() => process.exit(0))
+        .catch(e => state.message = 'Erreur: ' + e);
 }
 
 function checkUpdates(){
@@ -23,15 +27,15 @@ function checkUpdates(){
     state.checkingUpdate = true;
 }
 
-function uninstall(){
+function showSettings(){
     if(state.loading) return;
     state.loading = true;
-    state.confirmUninstall = true;
+    state.showSettings = true;
 }
 
 function closeModal(){
     state.loading = false;
-    state.confirmUninstall = false;
+    state.showSettings = false;
     state.checkingUpdate = false;
 }
 </script>
@@ -46,22 +50,13 @@ function closeModal(){
                     @click="launchGame">{{ state.message }}</Button>
                 </div>
                 <div class="more">
-                    <Button color="purple" :disabled="state.loading" @click="checkUpdates">Vérifier les mise à jour</Button>
-                    <Button color="red" :disabled="state.loading" @click="uninstall">Désinstaller</Button>
-                </div>
-            </div>
-            <div class="infos">
-                <div class="info">
-                    <p>Version du launcher: {}</p>
-                    <p>Version du jeu: {}</p>
-                </div>
-                <div class="info">
-                    <p>Dossier d'installation: {}</p>
+                    <Button color="purple" :disabled="state.loading" @click="checkUpdates">Vérifier les mises à jour</Button>
+                    <Button color="blue" :disabled="state.loading" @click="showSettings">Paramètres</Button>
                 </div>
             </div>
         </div>
         <UpdateModal v-if="state.checkingUpdate" @close="closeModal" />
-        <UninstallModal v-if="state.confirmUninstall" @close="closeModal" />
+        <SettingsModal v-if="state.showSettings" @close="closeModal" />
     </div>
 </template>
 
@@ -94,20 +89,22 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background: url("./assets/Screenshot.png");
+    background: url("./assets/Screenshot.png") no-repeat;
+    background-size: cover;
     padding-top: 60px;
     height: 100%;
 }
 
 .launcher .logo {
     width: 500px;
+    user-select: none;
 }
 
 .launcher .footer {
     background-color: white;
     border-radius: 100px 100px 0 0;
     box-shadow: 0 -3px 6px rgba(0, 0, 0, .1);
-    padding: 0 50px;
+    padding: 20px 50px;
     width: 100%;
 }
 
@@ -116,24 +113,13 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 14px;
-    margin-top: -55px;
+    margin-top: -75px;
 }
 
 .launcher .actions .more {
     display: flex;
     gap: 9px;
     justify-content: center;
-}
-
-.launcher .infos {
-    display: flex;
-    flex-direction: column;
-}
-
-.launcher .infos .info {
-    display: flex;
-    gap: 8px;
-    opacity: 0.3;
 }
 
 h1 {

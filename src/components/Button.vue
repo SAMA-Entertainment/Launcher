@@ -17,7 +17,7 @@ const props = defineProps({
         type: String,
         default: "medium",
         validator: function (value) {
-            return ["medium", "large"].indexOf(value) !== -1;
+            return ["small", "medium", "large"].indexOf(value) !== -1;
         },
     },
     loading: {
@@ -52,6 +52,11 @@ const classes = computed(() => {
 
 .mk-button:disabled {
     cursor: not-allowed;
+}
+
+.mk-button.mk-button--small {
+    font-size: 18px;
+    padding: 6px 8px;
 }
 
 .mk-button.mk-button--medium {

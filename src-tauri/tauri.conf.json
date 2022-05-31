@@ -7,16 +7,50 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "mikuni",
+    "productName": "Mikuni",
     "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "fs": {
+        "all": true
+      },
+      "http": {
+        "scope": [
+          "https://mikuni.me/*"
+        ]
+      },
+      "path": {
+        "all": true
+      },
+      "process": {
+        "exit": true
+      },
+      "shell": {
+        "execute": true,
+        "scope": [
+          {
+            "name": "open-folder",
+            "cmd": "explorer",
+            "args": [{ "validator": "\\S+" }]
+          },
+          {
+            "name": "run-game",
+            "cmd": "Game/Mikuni.exe",
+            "args": []
+          }
+        ]
+      },
+      "window": {
+        "all": true
+      },
+      "os": {
+        "all": true
+      }
     },
     "bundle": {
       "active": true,
-      "category": "DeveloperTool",
+      "category": "ArcadeGame",
       "copyright": "",
       "deb": {
         "depends": []
@@ -30,7 +64,7 @@
         "icons/icon.ico"
       ],
       "identifier": "launcher.mikuni.me",
-      "longDescription": "",
+      "longDescription": "Mikuni is a game created by the SAMA Entertainment Team",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -38,8 +72,10 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": [],
-      "shortDescription": "",
+      "resources": [
+        "Game"
+      ],
+      "shortDescription": "Mikuni Videogame",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,
@@ -57,7 +93,7 @@
       {
         "fullscreen": false,
         "height": 900,
-        "resizable": false,
+        "resizable": true,
         "title": "Mikuni",
         "width": 1500
       }
