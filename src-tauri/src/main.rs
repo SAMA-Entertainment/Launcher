@@ -36,14 +36,14 @@ async fn download_update(window: tauri::Window, dir: String, tag: String) -> Res
         let chunk = item.or(Err(format!("Error while downloading file")))?;
         file.write_all(&chunk).or(Err(format!("Error while writing to file")))?;
         downloaded += chunk.len() as u64;
-        window.emit("update_progress", Some(downloaded * 100 / total_size));
+        let _ = window.emit("update_progress", Some(downloaded * 100 / total_size));
     }
 
     let out_dir = format!("{}/Game", &dir);
     println!("Installing update {}...", &tag);
     extract_files(&window, &out_dir, &path)?;
     if let Err(e) = fs::remove_file(&path) {
-        eprintln!("Warning: Could not delete update zip file");
+        eprintln!("Warning: Could not delete update zip file: {}", e);
     }
     Ok(())
 }
@@ -80,7 +80,7 @@ fn extract_files(window: &tauri::Window, target_dir: &str, path: &str) -> Result
                 .or(Err(format!("Could not extract file {} from archive", &filename)))?;
         }
         println!("File {} extracted to \"{}\"", i, filename);
-        window.emit("install_progress", Some(i * 100 / total_files));
+        let _ = window.emit("install_progress", Some(i * 100 / total_files));
     }
     Ok(())
 }
