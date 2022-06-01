@@ -96,7 +96,7 @@ fetch('https://mikuni.me/auto_update_check.json')
     color: #363232;
 }
 .update-modal .space {
-    padding: 100px 300px;
+    padding: 15vh 25vw;
 }
 .update-modal .space img {
     width: 96px;

@@ -69,6 +69,8 @@ function closeModal(){
 body {
     width: 100vw;
     height: 100vh;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 * {
@@ -116,15 +118,42 @@ body {
     margin-top: -75px;
 }
 
-.launcher .actions .more {
+.launcher .more {
     display: flex;
     gap: 9px;
     justify-content: center;
 }
 
-h1 {
-    font-size: 64px;
+.launcher .more a {
+    color: #363232;
+    text-decoration: none;
 }
+
+.launcher .more a:hover, .launcher .more a:focus {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 3rem 0 1.38rem;
+    font-family: 'Luckiest Guy', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 4.209rem;
+}
+
+h2 {font-size: 3.157rem;}
+
+h3 {font-size: 2.369rem;}
+
+h4 {font-size: 1.777rem;}
+
+h5 {font-size: 1.333rem;}
+
+small, .text_small {font-size: 0.75rem;}
 
 h6 {
     color: rgba(54, 50, 50, 0.3);

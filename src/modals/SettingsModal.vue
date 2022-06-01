@@ -78,8 +78,7 @@ function openGameFolder(){
 
 <style>
 .settings-modal .modal--body {
-    gap: 32px;
-    max-width: 50vw;
+    gap: 16px;
 }
 .settings-modal .modal--body p {
     font-size: 22px;

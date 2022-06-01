@@ -32,5 +32,7 @@ export default {
     padding: 40px;
     background-color: #FFFFFF;
     border-radius: 8px;
+    max-width: 98vw;
+    max-height: 98vh;
 }
 </style>
