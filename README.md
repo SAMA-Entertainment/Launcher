@@ -2,10 +2,10 @@
 
 Official __**Mikuni**__ Launcher built using *Rust* and *Javascript*.
 This launcher provides auto-update functionality to the game with additional installation information. Please check out
-our project at [the Mikuni Website][https://mikuni.me/].
+our project at [the Mikuni Website](https://mikuni.me/ "Official Mikuni Website").
 
 ### Auto-updater 
-The auto-updater checks the version information located at [https://mikuni.me/auto_update_check.json] to decide if an
+The auto-updater checks the version information located at <https://mikuni.me/auto_update_check.json> to decide if an
 update is available. Then it downloads the version as a ZIP file and automatically unzip it and copies its's files to
 the correct installation folder.
 
