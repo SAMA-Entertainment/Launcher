@@ -1,7 +1,15 @@
-# Vue 3 + Vite
+# MikuniLauncher
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Official __**Mikuni**__ Launcher built using *Rust* and *Javascript*.
+This launcher provides auto-update functionality to the game with additional installation information. Please check out
+our project at [the Mikuni Website][https://mikuni.me/].
 
-## Recommended IDE Setup
+### Auto-updater 
+The auto-updater checks the version information located at [https://mikuni.me/auto_update_check.json] to decide if an
+update is available. Then it downloads the version as a ZIP file and automatically unzip it and copies its's files to
+the correct installation folder.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+### Build
+
+You must install Rust and NodeJS to build this project. You must also install Visual Studio Code Tools 2019
+(required by Tauri.). This project uses Tauri, a lightweight web framework for building desktop apps.

@@ -2,10 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Mikuni"
-#define MyAppVersion "0.1.0"
+#define MyAppVersion "1.0.0"
 #define MyAppPublisher "SAMA Entertainment"
 #define MyAppURL "https://mikuni.me/"
-#define MyAppExeName "Mikuni.exe"
+#define MyAppExeName "Mikuni.exe"  
+#define LauncherExe "MikuniLauncher.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -21,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={userappdata}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\LICENSE.rtf
+LicenseFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\installer\LICENSE.rtf
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 OutputDir=D:\Sofiane\Documents\workspace\Mikuni
@@ -62,15 +63,15 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; DestName: "MikuniLauncher.exe"; Flags: ignoreversion
+Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; DestName: "{#LauncherExe}"; Flags: ignoreversion
 Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\Game\*"; DestDir: "{userappdata}/Mikuni/Game/MikuniGame"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\MikuniLauncher.exe"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#LauncherExe}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\MikuniLauncher.exe"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#LauncherExe}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\MikuniLauncher.exe"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#LauncherExe}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
