@@ -73,9 +73,7 @@
         "providerShortName": null,
         "signingIdentity": null
       },
-      "resources": [
-        "Game"
-      ],
+      "resources": [],
       "shortDescription": "Mikuni Videogame",
       "targets": "all",
       "windows": {
