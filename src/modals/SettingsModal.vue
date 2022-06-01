@@ -17,7 +17,7 @@
         </div>
         <div class="info">
             <span>Dernière mise à jour:</span>
-            <p>1 janvier 1970</p>
+            <p>{{ state.latestUpdate }}</p>
         </div>
     </div>
 
@@ -37,6 +37,7 @@ import { Command } from '@tauri-apps/api/shell'
 let state = reactive({
     launcherVersion: 'Chargement...',
     gameVersion: 'Chargement...',
+    latestUpdate: 'Chargement...',
     installPath: '',
     isInstallPathValid: false
 });
@@ -48,6 +49,20 @@ path.resolve('.')
     })
     .then(platform => state.isInstallPathValid = platform === "Windows_NT")
     .catch(e => state.installPath = `{${ e }}`);
+
+path.dataDir()
+    .then(p => path.join(p, "Mikuni", "Game", "MikuniGame", "version.json"))
+    .then(p => fs.readTextFile(p))
+    .then(v => JSON.parse(v))
+    .then(v =>{
+        state.gameVersion = `${ v.tag } (${ v.version_number })`;
+        state.latestUpdate = new Date(v.timestamp).toLocaleString('fr-FR',
+            { weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: 'numeric' });
+    })
+    .catch(e => {
+        state.gameVersion = `{${ e }}`;
+        state.latestUpdate = `{${ e }}`;
+    });
 
 function openInstallFolder(){
     if(!state.isInstallPathValid) return;
