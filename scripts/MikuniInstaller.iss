@@ -26,7 +26,7 @@ LicenseFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\LICENSE.rtf
 PrivilegesRequired=lowest
 OutputDir=D:\Sofiane\Documents\workspace\Mikuni
 OutputBaseFilename=MikuniSetup
-SetupIconFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\icons\favicon.ico
+SetupIconFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\icons\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -62,15 +62,15 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\Game\*"; DestDir: "{app}/Game"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; DestName: "MikuniLauncher.exe"; Flags: ignoreversion
+Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\Game\*"; DestDir: "{userappdata}/Mikuni/Game/MikuniGame"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\MikuniLauncher.exe"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\MikuniLauncher.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\MikuniLauncher.exe"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

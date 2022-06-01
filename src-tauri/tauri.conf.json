@@ -37,8 +37,8 @@
           },
           {
             "name": "run-game",
-            "cmd": "Game/Mikuni.exe",
-            "args": []
+            "cmd": "Game/MikuniGame/Mikuni.exe",
+            "args": false
           }
         ]
       },

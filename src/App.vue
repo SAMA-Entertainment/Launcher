@@ -4,7 +4,7 @@ import Button from "./components/Button.vue";
 import UpdateModal from "./modals/UpdateModal.vue";
 import SettingsModal from "./modals/SettingsModal.vue";
 import { Command } from '@tauri-apps/api/shell'
-import { process } from "@tauri-apps/api";
+import { path, process } from "@tauri-apps/api";
 
 let state = reactive({
     loading: false,
@@ -17,7 +17,12 @@ function launchGame(){
     if(state.loading) return;
     state.loading = true;
     state.message = 'Démarrage';
-    new Command('run-game', []).spawn().then(() => process.exit(0))
+    path.dataDir()
+        .then(p => path.join(p, "Mikuni"))
+        .then(cwd => {
+            return new Command('run-game', [], { cwd }).spawn()
+        })
+        .then(() => process.exit(0))
         .catch(e => state.message = 'Erreur: ' + e);
 }
 
