@@ -31,6 +31,7 @@ SetupIconFile=..\src-tauri\icons\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
+SignTool=signtool
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

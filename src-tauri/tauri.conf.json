@@ -77,9 +77,9 @@
       "shortDescription": "Mikuni Videogame",
       "targets": "all",
       "windows": {
-        "certificateThumbprint": null,
+        "certificateThumbprint": "E3E1F04CBDF8F4427B0AF6FAB4E209F62807CDBC",
         "digestAlgorithm": "sha256",
-        "timestampUrl": "",
+        "timestampUrl": "http://timestamp.comodoca.com",
         "webviewFixedRuntimePath": "./Microsoft.WebView2.FixedVersionRuntime.102.0.1245.30.x64/"
       }
     },
