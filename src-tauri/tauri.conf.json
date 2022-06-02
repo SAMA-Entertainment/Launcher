@@ -92,10 +92,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 900,
+        "height": 800,
         "resizable": true,
         "title": "Mikuni",
-        "width": 1500
+        "width": 1200
       }
     ]
   }

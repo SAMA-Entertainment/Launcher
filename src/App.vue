@@ -85,12 +85,6 @@ body {
     font-family: "Luckiest Guy", sans-serif;
 }
 
-#app {
-    color: #333333;
-    width: 100%;
-    height: 100%;
-}
-
 .launcher {
     display: flex;
     flex-direction: column;
@@ -157,8 +151,6 @@ h3 {font-size: 2.369rem;}
 h4 {font-size: 1.777rem;}
 
 h5 {font-size: 1.333rem;}
-
-small, .text_small {font-size: 0.75rem;}
 
 h6 {
     color: rgba(54, 50, 50, 0.3);

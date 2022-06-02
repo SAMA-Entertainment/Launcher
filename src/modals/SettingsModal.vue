@@ -22,7 +22,7 @@
     </div>
 
     <div class="actions">
-        <Button color="gray" @click="$emit('close')">Fermer</Button>
+        <Button color="red" @click="$emit('close')">Fermer</Button>
     </div>
 </Modal>
 </template>

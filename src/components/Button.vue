@@ -48,10 +48,12 @@ const classes = computed(() => {
     transition: background-color 0.3s;
     background-color: #C4C4C4;
     color: #ffffff;
+    user-select: none;
 }
 
 .mk-button:disabled {
     cursor: not-allowed;
+    background-color: #bbbbbb !important;
 }
 
 .mk-button.mk-button--small {

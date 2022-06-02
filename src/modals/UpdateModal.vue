@@ -29,7 +29,7 @@ let state = reactive({
 function tryAbort(){
     if(state.installing) return;
     state.abort = true;
-    emit('close');
+    event.emit("abort_update").then(() => emit('close'));
 }
 
 const cancelText = computed(() => ["Annuler", "Fermer", "Terminer"][state.resultState]);
@@ -67,7 +67,6 @@ fetch('https://mikuni.me/auto_update_check.json')
             return;
         }
         state.task = 'Préparation de la màj...';
-        state.installing = true;
         updateInfo = result;
         let localPath = await path.dataDir();
         localPath = await path.join(localPath, "Mikuni");
@@ -76,6 +75,7 @@ fetch('https://mikuni.me/auto_update_check.json')
             state.task = 'Téléchargement de la màj... ' + e.payload + '%';
         });
         let unlisten_install = await event.listen('install_progress', (e) => {
+            state.installing = true;
             state.task = 'Copie des fichiers... ' + e.payload + '%';
         });
         await tauri.invoke('download_update', { dir: localPath, tag: result.tag }) // Call rust function
@@ -97,9 +97,11 @@ fetch('https://mikuni.me/auto_update_check.json')
 }
 .update-modal .space {
     padding: 15vh 25vw;
+    user-select: none;
 }
 .update-modal .space img {
     width: 96px;
     height: 96px;
+    pointer-events: none;
 }
 </style>
