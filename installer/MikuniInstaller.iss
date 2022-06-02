@@ -71,6 +71,7 @@ Source: "..\src-tauri\Game\MikuniGame\*"; DestDir: "{userappdata}/Mikuni/Game/Mi
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#LauncherExe}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#LauncherExe}"; Tasks: desktopicon
 
 [Run]
