@@ -22,12 +22,12 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={userappdata}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-LicenseFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\installer\LICENSE.rtf
+LicenseFile=LICENSE.rtf
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=D:\Sofiane\Documents\workspace\Mikuni
+OutputDir=..\src-tauri\target\release
 OutputBaseFilename=MikuniSetup
-SetupIconFile=D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\icons\icon.ico
+SetupIconFile=..\src-tauri\icons\icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -63,9 +63,9 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; DestName: "{#LauncherExe}"; Flags: ignoreversion
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\Microsoft.WebView2.FixedVersionRuntime.102.0.1245.30.x64\*"; DestDir: "{app}/Microsoft.WebView2.FixedVersionRuntime.102.0.1245.30.x64"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "D:\Sofiane\Documents\workspace\Mikuni\Launcher\src-tauri\Game\MikuniGame\*"; DestDir: "{userappdata}/Mikuni/Game/MikuniGame"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\src-tauri\target\release\{#MyAppExeName}"; DestDir: "{app}"; DestName: "{#LauncherExe}"; Flags: ignoreversion
+Source: "..\src-tauri\Microsoft.WebView2.FixedVersionRuntime.102.0.1245.30.x64\*"; DestDir: "{app}/Microsoft.WebView2.FixedVersionRuntime.102.0.1245.30.x64"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\src-tauri\Game\MikuniGame\*"; DestDir: "{userappdata}/Mikuni/Game/MikuniGame"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
